@@ -1,0 +1,253 @@
+{
+  "name": "Rakesh Kayal",
+  "title": "Backend Software Engineer",
+  "status": "Available for Hire • Open to Work",
+  "phone": "+91-8768799345",
+  "email": "rakeshkayal276@gmail.com",
+  "location": "West Bengal, India",
+  "socials": {
+    "linkedin": "https://linkedin.com/in/rakesh-kayal",
+    "github": "https://github.com/RakeshKayal",
+    "leetcode": "https://leetcode.com/u/RAKESH_kayal09"
+  },
+  "summary": "Backend Software Engineer with hands-on experience in Java, Spring Boot, and FastAPI, building REST APIs, JWT/OAuth2 authentication, and a WebSocket-based real-time messaging system supporting 500+ concurrent users. 400+ LeetCode problems solved.",
+  "experience": [
+    {
+      "company": "T-Web Exponent Services Pvt. Ltd",
+      "subName": "Techno Exponent",
+      "role": "Junior Software Engineer",
+      "duration": "Aug 2026 – Present",
+      "location": "Kolkata, India",
+      "bullets": [
+        "Build and maintain backend services using FastAPI, developing async, high-throughput REST endpoints consumed by internal and client-facing applications.",
+        "Integrate MySQL-backed data models with SQLAlchemy/Pydantic schemas, improving query efficiency and data validation."
+      ],
+      "tags": [
+        "FastAPI",
+        "Python",
+        "MySQL",
+        "SQLAlchemy",
+        "Pydantic",
+        "REST APIs"
+      ]
+    },
+    {
+      "company": "TechnoExponent",
+      "subName": "Euphoria genX",
+      "role": "Cloud Computing Intern – AWS",
+      "duration": "Jan 2026 – May 2026",
+      "location": "Kolkata, India",
+      "bullets": [
+        "Provisioned and configured an AWS EC2 instance via PuTTY to deploy a POS System application as part of a Cloud Computing internship.",
+        "Created a custom Git workflow to streamline version control and deployment, then managed instance lifecycle to optimize cost."
+      ],
+      "tags": [
+        "AWS EC2",
+        "IAM",
+        "PuTTY",
+        "Git",
+        "Linux",
+        "Cloud Computing"
+      ]
+    },
+    {
+      "company": "AI-LAB",
+      "subName": "Enterprise Intelligence",
+      "role": "Back-End Engineering Intern",
+      "duration": "June 2025 – July 2025",
+      "location": "Remote / Hybrid",
+      "bullets": [
+        "Developed RESTful APIs handling concurrent requests and optimized JPA queries, improving average API response time.",
+        "Implemented JWT and OAuth2-based authentication, ensuring secure and scalable access control for multiple clients."
+      ],
+      "tags": [
+        "Java",
+        "Spring Boot",
+        "Spring Data JPA",
+        "JWT",
+        "OAuth2",
+        "REST"
+      ]
+    },
+    {
+      "company": "ROOTNIK-LAB",
+      "subName": "Cybersecurity Division",
+      "role": "Cybersecurity Intern",
+      "duration": "June 2024 – Sept 2024",
+      "location": "Remote",
+      "bullets": [
+        "Performed security analysis on web applications to identify vulnerabilities such as SQL Injection and weak authentication flows.",
+        "Simulated real-world attack scenarios and applied secure coding practices to improve overall system reliability."
+      ],
+      "tags": [
+        "Cybersecurity",
+        "SQL Injection",
+        "Auth Audit",
+        "OWASP",
+        "Pen Testing"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "real-time-chat",
+      "title": "Real-Time Communication System",
+      "category": "High-Concurrency WebSocket Architecture",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "WebSocket",
+        "STOMP",
+        "MySQL",
+        "JMeter",
+        "JWT"
+      ],
+      "githubUrl": "https://github.com/RakeshKayal",
+      "summary": "Architected and implemented a high-performance real-time messaging platform supporting 500+ concurrent users with sub-millisecond packet routing, persistent storage, and zero error rates.",
+      "highlights": [
+        "Designed and implemented a real-time messaging system supporting 500+ concurrent users using WebSocket + STOMP, with persistent message storage and JWT-based authentication for private and group communication.",
+        "Resolved message duplication issues and improved delivery consistency under concurrent load conditions.",
+        "Load-tested the system using Apache JMeter with 500 virtual users, achieving 45 requests/second throughput with 0% error rate."
+      ],
+      "featured": true
+    },
+    {
+      "id": "upi-offline-mesh",
+      "title": "UPI Offline Mesh Simulator",
+      "category": "Distributed Systems & Cryptography",
+      "technologies": [
+        "Spring Boot",
+        "JPA",
+        "Cryptography",
+        "Concurrency",
+        "MySQL"
+      ],
+      "githubUrl": "https://github.com/RakeshKayal",
+      "summary": "Engineered a fault-tolerant payment simulation framework enabling offline mesh transaction routing with cryptographic replay verification and idempotent settlement guarantees.",
+      "highlights": [
+        "Developed a Spring Boot-based simulator that models offline payment delivery through mesh-style packet forwarding and deferred transaction settlement.",
+        "Implemented encryption with replay protection to ensure secure and tamper-resistant transaction transmission.",
+        "Built an idempotent transaction processing pipeline using atomic duplication and optimistic locking to prevent duplicate settlement during concurrent packet delivery."
+      ],
+      "featured": true
+    },
+    {
+      "id": "sih-telemedicine",
+      "title": "Telemedicine Care Gateway (SIH 2025)",
+      "category": "Healthcare Microservices Prototype",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "REST APIs",
+        "MySQL",
+        "OAuth2"
+      ],
+      "githubUrl": "https://github.com/RakeshKayal",
+      "summary": "Built an end-to-end telemedicine platform prototype for the Smart India Hackathon (SIH 2025) internal round at The Neotia University.",
+      "highlights": [
+        "Architected patient triage scheduling and appointment queuing services.",
+        "Implemented role-based security access control for patients and doctors using OAuth2 and Spring Security."
+      ],
+      "featured": false
+    }
+  ],
+  "skills": [
+    {
+      "category": "Core Languages",
+      "color": "blue",
+      "skills": [
+        "Java",
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "category": "Frameworks & ORM",
+      "color": "emerald",
+      "skills": [
+        "Spring Boot",
+        "Spring Data JPA",
+        "Hibernate",
+        "Spring Security",
+        "FastAPI",
+        "Pydantic",
+        "SQLAlchemy"
+      ]
+    },
+    {
+      "category": "Backend & Protocols",
+      "color": "purple",
+      "skills": [
+        "RESTful APIs",
+        "WebSocket",
+        "STOMP",
+        "JWT Authentication",
+        "OAuth2",
+        "Microservices"
+      ]
+    },
+    {
+      "category": "Cloud & Infrastructure",
+      "color": "amber",
+      "skills": [
+        "AWS EC2",
+        "IAM",
+        "PuTTY / SSH",
+        "Docker",
+        "Linux"
+      ]
+    }
+  ],
+  "coreCS": [
+    "Data Structures & Algorithms",
+    "Object-Oriented Programming (OOP)",
+    "Database Management Systems (DBMS)",
+    "Operating Systems",
+    "Computer Networks",
+    "Cybersecurity Principles"
+  ],
+  "tools": [
+    "Git",
+    "GitHub",
+    "Maven",
+    "Postman",
+    "Docker",
+    "Apache JMeter",
+    "VS Code",
+    "IntelliJ IDEA"
+  ],
+  "education": {
+    "institution": "The Neotia University",
+    "degree": "B.Tech in Computer Science and Engineering",
+    "specialization": "Specialization in Cyber Security",
+    "duration": "2022 – 2026",
+    "grade": "CGPA: 8.7 / 10",
+    "location": "West Bengal, India"
+  },
+  "certifications": [
+    {
+      "title": "AWS Academy Cloud Foundations",
+      "issuer": "AWS Academy",
+      "year": "2025",
+      "credentialUrl": "https://aws.amazon.com/training/aws-academy/"
+    },
+    {
+      "title": "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+      "issuer": "Oracle",
+      "year": "2025",
+      "credentialUrl": "https://education.oracle.com/"
+    },
+    {
+      "title": "Smart India Hackathon (SIH 2025) Participant",
+      "issuer": "Internal Round • The Neotia University",
+      "year": "2025",
+      "credentialUrl": "#"
+    }
+  ],
+  "stats": {
+    "leetcodeSolved": "400+",
+    "concurrentUsersTested": "500+",
+    "throughputTested": "45 req/s (0% error)",
+    "cgpa": "8.7 / 10"
+  }
+}

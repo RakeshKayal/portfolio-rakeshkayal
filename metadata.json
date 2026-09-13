@@ -1,0 +1,6 @@
+{
+  "name": "Rakesh Kayal — macOS Portfolio & Resume",
+  "description": "Interactive macOS Sequoia virtual workspace portfolio for Rakesh Kayal, Backend Software Engineer. Features Safari resume viewer, interactive CMD terminal, projects finder, and direct contact dispatch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
