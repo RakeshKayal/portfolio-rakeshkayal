@@ -8,7 +8,7 @@ interface RakeshAvatarProps {
   onPhotoChanged?: (dataUrl: string) => void;
 }
 
-const DEFAULT_AVATAR = 'public/rakesh-avatar.jpeg';
+const DEFAULT_AVATAR = '/rakesh-avatar.jpeg';
 
 export const RakeshAvatar: React.FC<RakeshAvatarProps> = ({
   className = '',
