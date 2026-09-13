@@ -35,7 +35,7 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastTimeout, setToastTimeout] = useState<any>(null);
   const [currentWallpaper, setCurrentWallpaper] = useState(
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuCbWiNOfR3rcdhFDMw9wv-9h-Ci_jGdduxJhwrbTLGXtDlrhRIGi9caS4LpAUlvnQc7RfX1R-wEotjK_P8iLdluxPj-q867zdQRhfDY9M3zegW8vfJTFxOzcZpwwOMQD44LrcfLMUzcAOE9_AYp-XEbBkv54UlyF1VLEAhcL7HWiAglktltA3Hg_qCTSMd4N-O_TFRPJGRK5hSF3XPNxKg0pzGlz5d1QO2LA1QGdVb8HWu_4_pBs4My'
+    'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d79c67a8-7603-46e4-b56f-fb9967f82eb2/debqlw7-6412faef-d32f-41bc-81fc-a900a788d474.jpg/v1/fill/w_1192,h_670,q_70,strp/4k_forest_wallpaper_by_mayankgorecha_debqlw7-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6Ii9mL2Q3OWM2N2E4LTc2MDMtNDZlNC1iNTZmLWZiOTk2N2Y4MmViMi9kZWJxbHc3LTY0MTJmYWVmLWQzMmYtNDFiYy04MWZjLWE5MDBhNzg4ZDQ3NC5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.DcAxmFVjZrX9-MdNLHFqsHV2dRvHiikOdpXlGMP1Y8k'
   );
 
   // Window states
