@@ -8,13 +8,15 @@ interface RakeshAvatarProps {
   onPhotoChanged?: (dataUrl: string) => void;
 }
 
+const DEFAULT_AVATAR = '/rakesh-avatar.jpg';
+
 export const RakeshAvatar: React.FC<RakeshAvatarProps> = ({
   className = '',
   size = 'md',
   showUploadPrompt = true,
   onPhotoChanged,
 }) => {
-  const [customAvatar, setCustomAvatar] = useState<string | null>(null);
+  const [customAvatar, setCustomAvatar] = useState<string | null>(DEFAULT_AVATAR);
   const [isHovered, setIsHovered] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
