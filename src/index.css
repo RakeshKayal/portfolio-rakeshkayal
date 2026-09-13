@@ -65,3 +65,5 @@
 .animate-shake {
   animation: macShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
+
+/* Custom macOS-like shadows for elements */
