@@ -10,7 +10,7 @@
     "github": "https://github.com/RakeshKayal",
     "leetcode": "https://leetcode.com/u/RAKESH_kayal09"
   },
-  "summary": "Backend Software Engineer with hands-on experience in Java, Spring Boot, and FastAPI, building REST APIs, JWT/OAuth2 authentication, and a WebSocket-based real-time messaging system supporting 500+ concurrent users. 400+ LeetCode problems solved.",
+  "summary": "Backend Software Engineer with hands-on experience in Java, Spring Boot, and FastAPI, developing high-throughput REST APIs, JWT/OAuth2 security, and high-concurrency WebSocket architectures benchmarked to 10,000 concurrent threads and 630+ req/sec with 0% error. 500+ LeetCode problems solved.",
   "experience": [
     {
       "company": "T-Web Exponent Services Pvt. Ltd",
@@ -99,15 +99,16 @@
         "WebSocket",
         "STOMP",
         "MySQL",
-        "JMeter",
-        "JWT"
+        "Apache JMeter",
+        "JWT",
+        "Spring Data JPA"
       ],
       "githubUrl": "https://github.com/RakeshKayal",
-      "summary": "Architected and implemented a high-performance real-time messaging platform supporting 500+ concurrent users with sub-millisecond packet routing, persistent storage, and zero error rates.",
+      "summary": "Architected a high-concurrency full-duplex messaging system benchmarked up to 10,000 concurrent threads, 632.9 req/sec, and 2 ms average latency with 0% error across 50,000 committed database messages.",
       "highlights": [
-        "Designed and implemented a real-time messaging system supporting 500+ concurrent users using WebSocket + STOMP, with persistent message storage and JWT-based authentication for private and group communication.",
-        "Resolved message duplication issues and improved delivery consistency under concurrent load conditions.",
-        "Load-tested the system using Apache JMeter with 500 virtual users, achieving 45 requests/second throughput with 0% error rate."
+        "Architected a full-duplex messaging backend using Spring Boot, WebSocket, and STOMP, implementing custom principal routing for 1-to-1 chat (O(1)) and topic brokers for group rooms (O(N^2)).",
+        "Stress-tested private message ingestion via non-GUI Apache JMeter, achieving 632.9 req/sec throughput and 2 ms average latency with 0% error across 50,000 database inserts under 10,000 concurrent threads.",
+        "Benchmarked single-room group chat limits, establishing an in-memory broker saturation threshold of ~150 concurrent active chatters (~112k broadcast frames) bounded by local TCP socket buffer capacity."
       ],
       "featured": true
     },
@@ -245,9 +246,10 @@
     }
   ],
   "stats": {
-    "leetcodeSolved": "400+",
-    "concurrentUsersTested": "500+",
-    "throughputTested": "45 req/s (0% error)",
+    "leetcodeSolved": "500+",
+    "concurrentUsersTested": "10,000+",
+    "throughputTested": "632.9 req/s",
+    "messagesPersisted": "55,010+",
     "cgpa": "8.7 / 10"
   }
 }

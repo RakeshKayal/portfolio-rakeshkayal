@@ -453,7 +453,7 @@ export const SafariWindow: React.FC<SafariWindowProps> = ({
                 ))}
                 <li>
                   <span className="font-bold">LeetCode: </span>
-                  <span>Solved 350+ algorithmic problems demonstrating strong core data structures &amp; algorithmic logic.</span>
+                  <span>Solved 500+ algorithmic problems demonstrating strong core data structures &amp; algorithmic logic.</span>
                 </li>
               </ul>
             </div>
@@ -530,7 +530,7 @@ export const SafariWindow: React.FC<SafariWindowProps> = ({
                   className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 border border-amber-500/30 text-xs transition-colors"
                 >
                   <Code2 className="w-3.5 h-3.5" />
-                  <span>LeetCode (350+)</span>
+                  <span>LeetCode (500+)</span>
                 </a>
               </div>
             </div>
@@ -540,15 +540,15 @@ export const SafariWindow: React.FC<SafariWindowProps> = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 select-none">
             <div className="mac-glass-card p-3 rounded-xl border border-white/10 text-center">
               <span className="text-[10px] uppercase font-mono text-white/50 block">LeetCode Solved</span>
-              <span className="text-lg sm:text-xl font-bold text-amber-400">350+</span>
+              <span className="text-lg sm:text-xl font-bold text-amber-400">500+</span>
             </div>
             <div className="mac-glass-card p-3 rounded-xl border border-white/10 text-center">
-              <span className="text-[10px] uppercase font-mono text-white/50 block">Concurrent Tested</span>
-              <span className="text-lg sm:text-xl font-bold text-sky-400">50,000+</span>
+              <span className="text-[10px] uppercase font-mono text-white/50 block">Concurrent virtual Users Tested</span>
+              <span className="text-lg sm:text-xl font-bold text-sky-400">10,000+</span>
             </div>
             <div className="mac-glass-card p-3 rounded-xl border border-white/10 text-center">
               <span className="text-[10px] uppercase font-mono text-white/50 block">Throughput Benchmark</span>
-              <span className="text-lg sm:text-xl font-bold text-emerald-400">12,000 req/s</span>
+              <span className="text-lg sm:text-xl font-bold text-emerald-400">632.9 req/s</span>
             </div>
             <div className="mac-glass-card p-3 rounded-xl border border-white/10 text-center">
               <span className="text-[10px] uppercase font-mono text-white/50 block">B.Tech CGPA</span>
