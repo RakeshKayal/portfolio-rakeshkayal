@@ -439,20 +439,99 @@ export const MacWhatsAppIcon: React.FC<{ size?: number; className?: string }> = 
   </svg>
 );
 
-// Authentic Apple Logo (Official pixel-accurate Apple vector)
-export const MacAppleIcon: React.FC<{ size?: number; className?: string; color?: string }> = ({
-  size = 24,
+// 3D Isometric Neon Cube Icon (Replaces MacAppleIcon)[cite: 3]
+export const MacCubeIcon: React.FC<{ size?: number; className?: string }> = ({
+  size = 48,
   className = '',
-  color = 'currentColor',
 }) => (
   <svg
     width={size}
     height={size}
-    viewBox="0 0 814 1000"
-    fill={color}
-    className={`select-none ${className}`}
+    viewBox="0 0 100 100"
+    className={`drop-shadow-md select-none ${className}`}
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z" />
+    <defs>
+      {/* Dark charcoal background matching the image */}
+      <linearGradient id="cubeTileBg" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#252a34" />
+        <stop offset="100%" stopColor="#15181f" />
+      </linearGradient>
+
+      {/* Top face gradient (Cyan -> Purple/Blue) */}
+      <linearGradient id="cubeTopFace" x1="0%" y1="50%" x2="100%" y2="50%">
+        <stop offset="0%" stopColor="#5ea5ff" />
+        <stop offset="50%" stopColor="#7a8aff" />
+        <stop offset="100%" stopColor="#a78bfa" />
+      </linearGradient>
+
+      {/* Neon glowing edges */}
+      <linearGradient id="neonCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#38bdf8" />
+        <stop offset="100%" stopColor="#2563eb" />
+      </linearGradient>
+
+      <linearGradient id="neonPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#818cf8" />
+        <stop offset="100%" stopColor="#c084fc" />
+      </linearGradient>
+
+      <linearGradient id="neonBottom" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#2563eb" />
+        <stop offset="100%" stopColor="#c084fc" />
+      </linearGradient>
+    </defs>
+
+    {/* Dark rounded base squircle with double rim */}
+    <rect x="2" y="2" width="96" height="96" rx="26" fill="url(#cubeTileBg)" stroke="#3b4252" strokeWidth="1.2" />
+    <rect x="5" y="5" width="90" height="90" rx="23" stroke="#1f242d" strokeWidth="1.5" />
+
+    {/* Top Face of the 3D Cube */}
+    <polygon
+      points="50,25 74,38 50,51 26,38"
+      fill="url(#cubeTopFace)"
+      stroke="#cbd5e1"
+      strokeWidth="1.2"
+      strokeLinejoin="round"
+    />
+
+    {/* Left Face */}
+    <polygon
+      points="26,38 50,51 50,75 26,62"
+      fill="#131823"
+      fillOpacity="0.8"
+    />
+
+    {/* Right Face */}
+    <polygon
+      points="50,51 74,38 74,62 50,75"
+      fill="#171b26"
+      fillOpacity="0.8"
+    />
+
+    {/* Wireframe Neon Edges */}
+    {/* Left vertical edge */}
+    <line x1="26" y1="38" x2="26" y2="62" stroke="url(#neonCyan)" strokeWidth="2.5" strokeLinecap="round" />
+    {/* Center vertical edge */}
+    <line x1="50" y1="51" x2="50" y2="75" stroke="url(#neonCyan)" strokeWidth="2.5" strokeLinecap="round" />
+    {/* Right vertical edge */}
+    <line x1="74" y1="38" x2="74" y2="62" stroke="url(#neonPurple)" strokeWidth="2.5" strokeLinecap="round" />
+    {/* Bottom V edges */}
+    <path
+      d="M 26,62 L 50,75 L 74,62"
+      stroke="url(#neonBottom)"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+
+    {/* Glowing Center Vertex Dot */}
+    <circle cx="50" cy="51" r="5" fill="#ffffff" />
+    <circle cx="50" cy="51" r="6" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="1.5" fill="none" />
   </svg>
 );
+
+// Backward compatibility alias in case your imports still use MacAppleIcon
+export const MacAppleIcon = MacCubeIcon;
