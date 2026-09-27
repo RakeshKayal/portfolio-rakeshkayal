@@ -164,12 +164,12 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
       // 2. Start cursive greetings at 3.2s
       const greetingsTimer = setTimeout(() => {
         setBootStage('greetings');
-      }, 3200);
+      }, 1500);
 
       // 3. Move to portfolio welcome after greetings cycle
       const welcomeTimer = setTimeout(() => {
         setBootStage('portfolio-welcome');
-      }, 3200 + GREETINGS_LIST.length * 1000);
+      }, 1500 + GREETINGS_LIST.length * 1000);
 
       return () => {
         clearTimeout(zoomTimer);
