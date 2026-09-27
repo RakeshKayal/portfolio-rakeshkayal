@@ -42,7 +42,7 @@ export const MacCubeIcon: React.FC<{ size?: number; className?: string }> = ({
         <stop offset="100%" stopColor="#2563eb" />
       </linearGradient>
 
-      <linearGradient id="neonPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#818cf8" />
         <stop offset="100%" stopColor="#c084fc" />
       </linearGradient>
@@ -91,16 +91,16 @@ export const MacCubeIcon: React.FC<{ size?: number; className?: string }> = ({
   </svg>
 );
 
-// Multilingual Greetings matching video flow[cite: 4]
-const GREETINGS_LIST = [
-  { text: 'hello', fontClass: 'font-apple-script' },
-  { text: 'hallo', fontClass: 'font-apple-script' },
-  { text: 'مرحبا', fontClass: 'font-arabic' },
-  { text: 'नमस्ते', fontClass: 'font-hindi' },
-  { text: 'bonjour', fontClass: 'font-apple-script' },
-  { text: 'hola', fontClass: 'font-apple-script' },
-  { text: 'ciao', fontClass: 'font-apple-script' },
-  { text: 'olá', fontClass: 'font-apple-script' },
+// Apple-style cursive greetings sequence[cite: 4]
+const GREETINGS_SEQUENCE = [
+  { text: 'hello', font: 'font-apple-script', dir: 'ltr' },
+  { text: 'hallo', font: 'font-apple-script', dir: 'ltr' },
+  { text: 'مرحبا', font: 'font-arabic-script', dir: 'rtl' },
+  { text: 'नमस्ते', font: 'font-devanagari-script', dir: 'ltr' },
+  { text: 'bonjour', font: 'font-apple-script', dir: 'ltr' },
+  { text: 'hola', font: 'font-apple-script', dir: 'ltr' },
+  { text: 'ciao', font: 'font-apple-script', dir: 'ltr' },
+  { text: 'olá', font: 'font-apple-script', dir: 'ltr' },
 ];
 
 interface BootScreenProps {
@@ -115,7 +115,7 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
 
   const [glowZoomActive, setGlowZoomActive] = useState(false);
   const [greetingIndex, setGreetingIndex] = useState(0);
-  const [greetingFade, setGreetingFade] = useState(true);
+  const [greetingAnim, setGreetingAnim] = useState<'fade-in' | 'visible' | 'fade-out'>('fade-in');
   const [welcomeReady, setWelcomeReady] = useState(false);
   const [timeStr, setTimeStr] = useState('4:39 PM');
 
@@ -143,19 +143,19 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
     return () => clearInterval(timer);
   }, []);
 
-  // Boot Progression Sequence
+  // Overall Boot Sequence Timeline
   useEffect(() => {
     if (!isUnlocked) {
       setBootStage('cube-static');
       setGlowZoomActive(false);
       setWelcomeReady(false);
       setGreetingIndex(0);
-      setGreetingFade(true);
+      setGreetingAnim('fade-in');
       setPassword('');
       setIsError(false);
       setErrorMessage('');
 
-      // 1. Static icon for 2.0s
+      // 1. Static cube for 2.0s
       const zoomTimer = setTimeout(() => {
         setBootStage('logo-zoom');
         setGlowZoomActive(true);
@@ -164,36 +164,53 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
       // 2. Start cursive greetings at 3.2s
       const greetingsTimer = setTimeout(() => {
         setBootStage('greetings');
-      }, 1500);
-
-      // 3. Move to portfolio welcome after greetings cycle
-      const welcomeTimer = setTimeout(() => {
-        setBootStage('portfolio-welcome');
-      }, 1500 + GREETINGS_LIST.length * 1000);
+      }, 3200);
 
       return () => {
         clearTimeout(zoomTimer);
         clearTimeout(greetingsTimer);
-        clearTimeout(welcomeTimer);
       };
     }
   }, [isUnlocked]);
 
-  // Cursive Greeting Cycling with crossfade[cite: 4]
+  // Cursive Greeting Cycling Animation with authentic fluid hold & cross-fade[cite: 4]
   useEffect(() => {
-    if (bootStage === 'greetings') {
-      const interval = setInterval(() => {
-        setGreetingFade(false);
+    if (bootStage !== 'greetings') return;
 
-        setTimeout(() => {
-          setGreetingIndex((prev) => (prev + 1) % GREETINGS_LIST.length);
-          setGreetingFade(true);
-        }, 250);
-      }, 1000);
+    let isMounted = true;
 
-      return () => clearInterval(interval);
-    }
-  }, [bootStage]);
+    // Trigger Fade In
+    setGreetingAnim('fade-in');
+
+    const holdTimer = setTimeout(() => {
+      if (!isMounted) return;
+      setGreetingAnim('visible');
+    }, 350);
+
+    // Hold word for ~1.5s then fade out[cite: 4]
+    const fadeOutTimer = setTimeout(() => {
+      if (!isMounted) return;
+      setGreetingAnim('fade-out');
+    }, 1550);
+
+    // Advance word after fade-out completes
+    const nextWordTimer = setTimeout(() => {
+      if (!isMounted) return;
+      if (greetingIndex >= GREETINGS_SEQUENCE.length - 1) {
+        // Automatically proceed to welcome screen once full loop ends
+        setBootStage('portfolio-welcome');
+      } else {
+        setGreetingIndex((prev) => prev + 1);
+      }
+    }, 1900);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(holdTimer);
+      clearTimeout(fadeOutTimer);
+      clearTimeout(nextWordTimer);
+    };
+  }, [bootStage, greetingIndex]);
 
   useEffect(() => {
     if (bootStage === 'portfolio-welcome') {
@@ -274,22 +291,41 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
     }
   };
 
+  const currentGreeting = GREETINGS_SEQUENCE[greetingIndex];
+
   if (isUnlocked) return null;
 
   return (
     <>
-      {/* Dynamic font stylesheet matching cursive script and international scripts */}
+      {/* Handcrafted fluid script typography matching Apple's cursive handwriting[cite: 4] */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Sans+Arabic:wght@600&family=Rozha+One&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Amiri:ital,wght@1,400;1,700&family=Kalam:wght@400;700&display=swap');
+
         .font-apple-script {
-          font-family: 'Caveat', cursive, -apple-system, sans-serif;
+          font-family: 'Cedarville Cursive', cursive, -apple-system, sans-serif;
+          font-weight: 400;
+          letter-spacing: -0.01em;
         }
-        .font-arabic {
-          font-family: 'Noto Sans Arabic', sans-serif;
+
+        .font-arabic-script {
+          font-family: 'Amiri', serif;
+          font-style: italic;
+          letter-spacing: 0.02em;
         }
-        .font-hindi {
-          font-family: 'Rozha One', serif;
+
+        .font-devanagari-script {
+          font-family: 'Kalam', cursive, sans-serif;
+          letter-spacing: 0.05em;
+        }
+
+        .apple-boot-spotlight {
+          background: radial-gradient(
+            circle at 50% 50%,
+            #222a36 0%,
+            #141923 35%,
+            #0b0d13 65%,
+            #050608 100%
+          );
         }
       `}</style>
 
@@ -319,7 +355,7 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
             >
               <MacCubeIcon size={110} />
 
-              {/* Mirror Reflection */}
+              {/* Inverted mirror floor reflection */}
               <div
                 className="relative z-0 mt-1 pointer-events-none select-none overflow-hidden"
                 style={{ height: 60, width: 110 }}
@@ -342,39 +378,43 @@ export const BootScreen: React.FC<BootScreenProps> = ({ onUnlock, isUnlocked }) 
           </div>
         )}
 
-        {/* ================= STAGE 3: AUTHENTIC CURSIVE GREETING SCREEN[cite: 4] ================= */}
+        {/* ================= STAGE 3: CURSIVE GREETING SCREEN[cite: 4] ================= */}
         {bootStage === 'greetings' && (
           <div
             onClick={() => setBootStage('portfolio-welcome')}
-            className="relative w-full h-full flex flex-col items-center justify-between bg-black text-white cursor-pointer select-none overflow-hidden"
-            style={{
-              background: 'radial-gradient(ellipse at 50% 50%, rgba(45, 55, 75, 0.45) 0%, rgba(13, 17, 24, 0.85) 50%, #000000 100%)',
-            }}
+            className="relative w-full h-full flex flex-col justify-between items-center apple-boot-spotlight select-none cursor-pointer overflow-hidden text-white"
           >
-            {/* Top Empty Spacer */}
-            <div className="h-10" />
+            {/* Top Spacer */}
+            <div className="h-14" />
 
             {/* Glowing Cursive Center Word[cite: 4] */}
-            <div className="flex flex-col items-center justify-center my-auto">
+            <div className="relative flex flex-col items-center justify-center my-auto px-6">
+              {/* Soft specular ambient halo */}
+              <div className="absolute w-[360px] h-[160px] bg-white/[0.07] rounded-full blur-[60px] pointer-events-none" />
+
               <span
-                className={`text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white font-medium tracking-wide transition-all duration-300 ease-out transform ${
-                  GREETINGS_LIST[greetingIndex].fontClass
+                dir={currentGreeting.dir}
+                className={`text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white select-none transition-all duration-[450ms] ease-in-out transform ${
+                  currentGreeting.font
                 } ${
-                  greetingFade
-                    ? 'opacity-100 scale-100 blur-0'
-                    : 'opacity-0 scale-95 blur-[2px]'
+                  greetingAnim === 'fade-out'
+                    ? 'opacity-0 scale-[0.98] blur-[2px]'
+                    : greetingAnim === 'fade-in'
+                    ? 'opacity-0 scale-[1.01] blur-[1px]'
+                    : 'opacity-100 scale-100 blur-0'
                 }`}
                 style={{
-                  textShadow: '0 0 25px rgba(255, 255, 255, 0.45), 0 0 50px rgba(255, 255, 255, 0.2)',
+                  textShadow:
+                    '0 0 20px rgba(255, 255, 255, 0.4), 0 0 45px rgba(255, 255, 255, 0.15)',
                 }}
               >
-                {GREETINGS_LIST[greetingIndex].text}
+                {currentGreeting.text}
               </span>
             </div>
 
-            {/* Exact Bottom Skip Label from Video[cite: 4] */}
-            <div className="pb-8 tracking-widest text-[10px] sm:text-[11px] font-sans font-semibold text-white/40 uppercase">
-              CLICK ANYWHERE TO SKIP
+            {/* Exact Bottom Label from Video[cite: 4] */}
+            <div className="pb-10 tracking-[0.25em] text-[11px] font-sans font-medium text-white/35 uppercase select-none">
+              Click anywhere to skip
             </div>
           </div>
         )}
